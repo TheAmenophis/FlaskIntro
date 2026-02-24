@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Random quote:</h1>
+    <div id="coin"> Pritisni gumb za met kovanca </div>
+    <input type="text" name="" id="vrednost">
+    <button onclick="btnClick()" type="button">FLIP!</button><br>
+    <img id ="slika" src="" alt=""> 
+</body>
+
+</html>
+
+<script>
+    function btnClick() {
+        var divCoin = document.getElementById("coin")
+        var inpText = document.getElementById("vrednost").value
+        console.log(inpText)
+        $.ajax({
+            url: "/coindata",
+            data: {
+                vrednost: inpText
+            },
+            success: function (result) {
+                console.log(result)
+                divCoin.innerHTML = result.status
+                document.getElementById("slika").src=result.img
+            }
+        });
+
+        //divCoin.innerHTML = "Jost Lampret"
+        //console.log("LASKO")
+    }
+</script>
