@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <title>Request metode</title>
+    <script src = https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js></script>
+</head>
+<body>
+    <div id="output">Null</div>
+</body>
+</html>
+
+<script>
+    var outputDiv = document.getElementById("output")
+    function postAjax(){
+        $.ajax({
+            url: "/",
+            method: "POST",
+            data: {
+                zipcode: 97201
+            },
+            success: function (result) {
+                outputDiv.innerHTML = result.status
+                console.log(result)
+            }
+        });
+    }
+
+    setInterval(postAjax, 1000)
+</script>
